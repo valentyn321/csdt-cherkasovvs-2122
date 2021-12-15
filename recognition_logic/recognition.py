@@ -75,6 +75,7 @@ class Recognizer:
         return data
 
     def main(self):
+        pass
         # self.recognition_run("input_images", "output_images")
 
         # self.picture_face_recognition("input_images/laptop_1.jpeg")
