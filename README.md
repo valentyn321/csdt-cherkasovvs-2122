@@ -5,7 +5,7 @@ _Last name_ : Cherkasov
 _Group_ : KI - 48
 
 _Student number_ : #19:
-* Game - Tennis 
+* Game - Tennis
 * Data driven format - XML
 * HW i-face - UART
 
