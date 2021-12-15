@@ -1,4 +1,5 @@
 import face_recognition
+import os
 import pytest
 from .recognition import Recognizer
 
@@ -59,3 +60,15 @@ class TestRecognizerUnit:
         )
         assert isinstance(data, dict)
         assert len(data) == 2
+
+
+class TestRecognizerIntegration:
+    def test_recognition_run(self, recognizer):
+        """The number of items should be different,
+        because there is a photo of laptop in input folder"""
+        recognizer.recognition_run(
+            "testing_resources/input_images", "testing_resources/output_images"
+        )
+        assert len(os.listdir("testing_resources/input_images")) != len(
+            os.listdir("testing_resources/output_images")
+        )

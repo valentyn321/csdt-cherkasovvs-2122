@@ -1,3 +1,4 @@
+from genericpath import exists
 import face_recognition
 import os
 import sys
@@ -44,11 +45,14 @@ class Recognizer:
         else:
             images = os.listdir(input_path)
             for image_path in images:
-                image, face_coordinates = self.picture_face_recognition(
-                    f"{input_path}/{image_path}"
-                )
-                destination = f"{output_path}/marked_{image_path}"
-                self.mark_faces(image, face_coordinates, destination)
+                try:
+                    image, face_coordinates = self.picture_face_recognition(
+                        f"{input_path}/{image_path}"
+                    )
+                    destination = f"{output_path}/marked_{image_path}"
+                    self.mark_faces(image, face_coordinates, destination)
+                except TypeError:
+                    pass
 
     def train_model_with_images(self, name, input_path):
         known_encodings = []
