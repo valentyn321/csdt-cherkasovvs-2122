@@ -33,6 +33,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'find_faces' %}">Face detection</a></li>
                             <li><a class="dropdown-item" href="{% url 'compare_faces' %}">Face compare</a></li>
+                            <li><a class="dropdown-item" href="{% url 'video_detection' %}">Video Detection</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -56,6 +57,9 @@
         </div>
         <div class=" text-center mt-3">
             <a class="btn btn-outline-dark btn-lg" role="button" href="{% url 'compare_faces' %}">Compare faces</a>
+        </div>
+        <div class=" text-center mt-3">
+            <a class="btn btn-outline-dark btn-lg" role="button" href="{% url 'video_detection' %}">Video detection</a>
         </div>
     </div>
     {% endblock %}

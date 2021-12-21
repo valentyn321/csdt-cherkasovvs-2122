@@ -48,3 +48,16 @@ def compare_faces(request):
         )
         return render(request, "main/compare_faces.html", {"result": result[0]})
     return render(request, "main/compare_faces.html")
+
+
+def video_detection(request):
+    if request.method == "POST" and request.FILES["upload"]:
+        upload = request.FILES["upload"]
+        fss = FileSystemStorage()
+        file = fss.save(upload.name, upload)
+        file_url = fss.url(file)
+        Recognizer().detect_person_in_video(
+            f"/home/valentyn/Documents/csdt-cherkasovvs-2122/recognition_logic/recognition_django{file_url}"
+        )
+        return render(request, "main/video_detection.html", {"file_url": file_url})
+    return render(request, "main/video_detection.html")

@@ -25,4 +25,9 @@ urlpatterns = [
     path("", main_views.main, name="main"),
     path("recognition/find_faces", main_views.find_faces, name="find_faces"),
     path("recognition/compare_faces", main_views.compare_faces, name="compare_faces"),
+    path(
+        "recognition/video_detection",
+        main_views.video_detection,
+        name="video_detection",
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
