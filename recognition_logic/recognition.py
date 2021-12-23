@@ -38,6 +38,23 @@ class Recognizer:
             print("There are different peoples on the images.")
         return result
 
+    def recognition_run_for_one_picture(self, input_path, output_path):
+        try:
+            image, face_coordinates = self.picture_face_recognition(f"{input_path}")
+            destination = f"{output_path}"
+            self.mark_faces(image, face_coordinates, destination)
+        except TypeError:
+            pass
+
+    def compare_for_server(self, input_path1, input_path2):
+        try:
+            img1, coordinates1 = self.picture_face_recognition(input_path1)
+            img2, coordinates2 = self.picture_face_recognition(input_path2)
+            result = self.compare_two_faces(img1, img2)
+            return result
+        except TypeError:
+            pass
+
     def recognition_run(self, input_path, output_path):
         if not os.path.exists(input_path):
             print("f[ERROR] there is no directory '{input_path}'")

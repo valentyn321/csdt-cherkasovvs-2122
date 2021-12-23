@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Face detection</h1>
+    <p class="lead">Upload video and I will detect faces on it !</p>
+    <p>Made by Valentyn Cherkasov</p>
+</div>
+<div class="container">
+    <h2 class="text-center mt-5">Add videos</h2>
+    <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+
+        <input type="file" name="upload" accept="video/*">
+        <br>
+        <button class="btn btn-dark my-4" type="submit">Submit</button>
+    </form>
+    <h2 class="text-center">Result</h2>
+    <div class="row text-center">
+        <div class="column">
+            <p>Result should be opened in the separate window.</p>
+        </div>
+    </div>
+    {% endblock %}
