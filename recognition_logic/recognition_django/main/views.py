@@ -5,6 +5,7 @@ import sys
 
 sys.path.append("../../")
 from recognition_logic.recognition import Recognizer
+from .models import Image
 
 
 def main(request):
@@ -21,10 +22,15 @@ def find_faces(request):
             f"/home/valentyn/Documents/csdt-cherkasovvs-2122/recognition_logic/recognition_django{file_url}",
             f"/home/valentyn/Documents/csdt-cherkasovvs-2122/recognition_logic/recognition_django/media/marked_{file}",
         )
+        img = Image.objects.create(
+            title=file_url,
+            face_location=str(result),
+            output_location=f"/media/marked_{file}",
+        )
         return render(
             request,
             "main/find_faces.html",
-            {"file_url": file_url, "result_image": f"/media/marked_{file}"},
+            {"file_url": file_url, "result_image": img.output_location},
         )
     return render(request, "main/find_faces.html")
 
